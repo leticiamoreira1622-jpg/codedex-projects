@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Time Traveller Game</title>
+  <style>
+    /* Estilização para dar um clima "sci-fi/cyberpunk" ao jogo */
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #game-container {
+      background-color: #161b22;
+      padding: 30px;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      color: #58a6ff;
+      font-size: 24px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #21262d;
+      color: #c9d1d9;
+      border: 1px solid #f0f6fc10;
+      padding: 12px;
+      font-size: 15px;
+      font-family: inherit;
+      cursor: pointer;
+      border-radius: 6px;
+      text-align: left;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #30363d;
+      border-color: #8b949e;
+      color: #fff;
+    }
+
+    .restart-btn {
+      background-color: #238636;
+      color: white;
+      text-align: center;
+    }
+    .restart-btn:hover {
+      background-color: #2ea043;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game-container">
+    <h1>Time Project</h1>
+    <p id="story-text">Carregando história...</p>
+    <div id="choices-container" class="btn-container"></div>
+  </div>
+
+  <script>
+    // Elementos da página que vamos modificar via JavaScript
+    const storyText = document.getElementById("story-text");
+    const choicesContainer = document.getElementById("choices-container");
+
+    // Toda a estrutura do seu jogo mapeada em "estados" (cenas)
+    const storyData = {
+      start: {
+        text: "You've been kidnapped by a time traveller.<br><br>After a long talk, you've been communicated that you have two options:",
+        choices: [
+          { text: "1 - Stay in this new world, never coming back home.", nextState: "stayWorld" },
+          { text: "2 - Try to come back, but your memory will be permanently erased.", nextState: "backHome" }
+        ]
+      },
+      stayWorld: {
+        text: "You're staying then, good!<br><br>You were invited to know new people from the time traveller community. After a talk, you find out that you might become a time traveller too if you allow the community to teach you.<br><br>But the training season might be hard and traumatic, even though it allows you to live in any reality for a limited time.<br><br>You allow it?",
+        choices: [
+          { text: "1 - Yes, I want to become a time traveller!", nextState: "lonelyTraveller" },
+          { text: "2 - No, I prefer to continue as a lost person.", nextState: "kickedOut" }
+        ]
+      },
+      lonelyTraveller: {
+        text: "You became a successful time traveller, but lonely.",
+        choices: [{ text: "Jogar Novamente", nextState: "start", isRestart: true }]
+      },
+      kickedOut: {
+        text: "You became a useless person, what made some time travellers mad, so you were kicked out of the community and ended alone.",
+        choices: [{ text: "Jogar Novamente", nextState: "start", isRestart: true }]
+      },
+      backHome: {
+        text: "You came back, but you don't remember anything. Some stranger comes to you and says that she's your mother.<br><br>You believe her?",
+        choices: [
+          { text: "1 - Yes, she might be my mother.", nextState: "clinic" },
+          { text: "2 - No, what if she's just a crazy woman?", nextState: "goodLife" }
+        ]
+      },
+      clinic: {
+        text: "She wasn't your mother, she took you to a psychological clinic where you stayed until your death.",
+        choices: [{ text: "Jogar Novamente", nextState: "start", isRestart: true }]
+      },
+      goodLife: {
+        text: "You never found your mother, and never knew if this woman was your mother, but lived a good life.",
+        choices: [{ text: "Jogar Novamente", nextState: "start", isRestart: true }]
+      }
+    };
+
+    // Função que atualiza a tela com o texto e os botões da cena atual
+    function goToScene(sceneId) {
+      const scene = storyData[sceneId];
+      
+      // Atualiza o texto da história
+      storyText.innerHTML = scene.text;
+      
+      // Limpa os botões antigos
+      choicesContainer.innerHTML = "";
+      
+      // Cria os novos botões baseados nas opções da cena
+      scene.choices.forEach(choice => {
+        const button = document.createElement("button");
+        button.innerText = choice.text;
+        
+        // Se for o botão de reiniciar, muda o estilo dele
+        if(choice.isRestart) {
+          button.classList.add("restart-btn");
+        }
+
+        // Quando o botão for clicado, vai para a próxima cena
+        button.onclick = () => goToScene(choice.nextState);
+        choicesContainer.appendChild(button);
+      });
+    }
+
+    // Inicia o jogo na primeira cena
+    goToScene("start");
+  </script>
+
+</body>
+</html>
