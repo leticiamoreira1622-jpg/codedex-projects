@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Time Traveller Game</title>
   <style>
-    /* Estilização para dar um clima "sci-fi/cyberpunk" ao jogo */
     body {
       background-color: #0d1117;
       color: #c9d1d9;
@@ -85,11 +84,9 @@
   </div>
 
   <script>
-    // Elementos da página que vamos modificar via JavaScript
     const storyText = document.getElementById("story-text");
     const choicesContainer = document.getElementById("choices-container");
 
-    // Toda a estrutura do seu jogo mapeada em "estados" (cenas)
     const storyData = {
       start: {
         text: "You've been kidnapped by a time traveller.<br><br>After a long talk, you've been communicated that you have two options:",
@@ -130,33 +127,26 @@
       }
     };
 
-    // Função que atualiza a tela com o texto e os botões da cena atual
     function goToScene(sceneId) {
       const scene = storyData[sceneId];
       
-      // Atualiza o texto da história
       storyText.innerHTML = scene.text;
       
-      // Limpa os botões antigos
       choicesContainer.innerHTML = "";
       
-      // Cria os novos botões baseados nas opções da cena
       scene.choices.forEach(choice => {
         const button = document.createElement("button");
         button.innerText = choice.text;
         
-        // Se for o botão de reiniciar, muda o estilo dele
         if(choice.isRestart) {
           button.classList.add("restart-btn");
         }
 
-        // Quando o botão for clicado, vai para a próxima cena
         button.onclick = () => goToScene(choice.nextState);
         choicesContainer.appendChild(button);
       });
     }
 
-    // Inicia o jogo na primeira cena
     goToScene("start");
   </script>
 
