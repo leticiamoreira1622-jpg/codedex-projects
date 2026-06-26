@@ -19,7 +19,7 @@ Abaixo estão mapeados os conceitos teóricos e práticos estruturados durante o
 | Módulo / Conceito | Conteúdo Prático | Status |
 | :--- | :--- | :---: |
 | **01. Fundamentos** | Variáveis, tipos de dados primitivos (`int`, `double`, `boolean`), e operadores matemáticos. | ✅ Concluído |
-| **02. Estruturas Condicionais** | Controle de fluxo com `if`, `else if`, `else` e operadores lógicos (`&&`, `||`, `!`). | ✅ Concluído |
+| **02. Estruturas Condicionais** | Controle de fluxo com `if`, `else if`, `else` e operadores lógicos. | ✅ Concluído |
 | **03. Loops & Repetição** | Estruturas de repetição utilizando laços `while`, `for` e controle de iterações. | ✅ Concluído |
 | **04. Arrays & Coleções** | Armazenamento e manipulação de vetores e listas de dados. | 🚧 Em Andamento |
 | **05. Introdução à POO** | Criação das primeiras Classes, Atributos, Métodos e Instanciação de Objetos. | ⏳ Planejado |
@@ -28,12 +28,11 @@ Abaixo estão mapeados os conceitos teóricos e práticos estruturados durante o
 
 ## 💻 Desafios em Destaque
 
-Aqui pretendo listar os códigos de maior impacto da plataforma, utilizando o **Método STAR** para documentar o problema proposto pelo Codédex e a solução lógica aplicada em Java:
 
-1.  **timeTravelerGame**
+1.  **TimeTravelerGame**
     * *Descrição:* Utilização de *Control Flow* e *Scanner* para a construção narrativa de um pequeno jogo.
     * *Estruturas Utilizadas:* `Scanner`, control flow, fundamentos.
-    * *Código:* [Link direto para o arquivo `.java` correspondente no seu repositório]
+    * *Código:* [TimeTravellerGame](https://github.com/leticiamoreira1622-jpg/codedex-projects/blob/main/Java/timeTravellerGame.java)
 
 ---
 
@@ -46,11 +45,11 @@ Em conformidade com as diretrizes arquiteturais auditadas pelo **Google Gemini**
 
 ## 🌐 Conexões Profissionais
 
-Para conferir o ecossistema completo e os outros planejamentos do meu Bootcamp I, acesse:
+Para conferir o ecossistema completo, acesse:
 
 * **🔗 Meu PortfolioHUB (GitHub Pages):** [leticiamoreira1622-jpg.github.io](https://leticiamoreira1622-jpg.github.io)
 * **💼 LinkedIn Profissional:** [Acesse meu perfil](https://www.linkedin.com/in/let%C3%ADcia-oliveira-a616b3305)
-* **🌌 Perfil Oficial no Codédex:** [Link do seu perfil público no Codédex, se houver]
+* **🌌 Perfil Oficial no Codédex:** [Acesse meu perfil](https://www.codedex.io/@lelemoni)
 
 ---
-*Documento integrado à esteira de engenharia do primeiro semestre de Engenharia de Software.*
+
